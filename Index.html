@@ -175,3 +175,48 @@ function unlock(){
     alert("Wrong Code 😏");
   }
 }
+
+  // ===================================
+
+const book=document.getElementById("book");
+
+pagesContent.forEach((content,i)=>{
+  let page=document.createElement("div");
+  page.className="page";
+  page.style.zIndex=pagesContent.length-i;
+  page.innerHTML=content;
+  book.appendChild(page);
+});
+
+let currentPage=0;
+
+function nextPage(){
+  if(currentPage < pagesContent.length){
+    book.children[currentPage].classList.add("flipped");
+    currentPage++;
+
+    /* Heart burst on proposal page */
+    if(currentPage === pagesContent.length){
+      for(let i=0;i<30;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(25+Math.random()*40)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
+      }
+    }
+  }
+}
+
+function prevPage(){
+  if(currentPage>0){
+    currentPage--;
+    book.children[currentPage].classList.remove("flipped");
+  }
+}
+
+</script>
+</body>
+</html>
