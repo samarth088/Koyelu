@@ -145,3 +145,33 @@ button{
 
 <script>
   
+/* COUNTDOWN */
+let time=10;
+let cd=setInterval(()=>{
+  document.getElementById("countdown").innerText="Opening in "+time+"...";
+  time--;
+  if(time<0) clearInterval(cd);
+},1000);
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(20+Math.random()*30)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},800);
+
+/* PASSWORD */
+function unlock(){
+  if(document.getElementById("pass").value==="koyel520flowers"){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("bookContainer").style.display="flex";
+    document.getElementById("controls").style.display="block";
+    document.getElementById("bgMusic").play();
+  }else{
+    alert("Wrong Code 😏");
+  }
+}
